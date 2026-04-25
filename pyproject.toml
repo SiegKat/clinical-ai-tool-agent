@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clinical-ai-tool-agent"
+version = "0.1.0"
+description = "Educational LangChain ReAct agent that calls clinical calculators (BMI, MAP, Anion Gap) and a local FAISS knowledge base, all on a local TinyLLaMA via Ollama."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Thiago Abrante Da Costa" }]
+dependencies = [
+    "langchain>=0.3",
+    "langchain-core>=0.3",
+    "langchain-community>=0.3",
+    "langchain-ollama>=0.2",
+    "langchain-huggingface>=0.1",
+    "langchain-text-splitters>=0.3",
+    "faiss-cpu>=1.9",
+    "sentence-transformers>=3.3",
+    "pydantic>=2.10",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3", "jupyterlab>=4.3"]
+
+[project.scripts]
+clinical-agent = "clinical_ai_tool_agent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+clinical_ai_tool_agent = ["corpus/*.md"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
