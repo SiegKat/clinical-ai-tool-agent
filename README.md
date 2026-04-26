@@ -10,6 +10,10 @@
 ![LangChain](https://img.shields.io/badge/framework-LangChain-1c3c5c)
 ![FAISS](https://img.shields.io/badge/vectorstore-FAISS-yellow)
 
+## Origin
+
+This project started as an exercise for FAU's COT 6930 (Generative AI & Software Development Lifecycles) course. The original notebook is preserved as [`notebooks/walkthrough.ipynb`](notebooks/walkthrough.ipynb) — the complete, exploratory version with the original model outputs intact. Everything else in this repo (the Python package, tests, CLI, and [`notebooks/demo.ipynb`](notebooks/demo.ipynb)) is a cleaner, packaged take I built afterwards to turn the exercise into something reusable.
+
 ## What this demonstrates
 
 - **Agent design** — a ReAct loop (`Action` / `Action Input` / `Final Answer` text protocol) that works on small local models without native function calling.
@@ -132,7 +136,9 @@ clinical-ai-tool-agent/
 │   ├── agent.py          # ReAct loop
 │   └── cli.py            # interactive REPL
 ├── tests/                # calculators + parser + corpus tests
-└── notebooks/demo.ipynb
+└── notebooks/
+    ├── demo.ipynb        # quick library-usage example
+    └── walkthrough.ipynb # original COT 6930 exercise, cleaned for portfolio use
 ```
 
 ---
