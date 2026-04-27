@@ -2,8 +2,6 @@
 
 > A LangChain ReAct agent that reasons about patient vitals — deciding when to call clinical calculators (BMI, MAP, Anion Gap) versus when to retrieve from a local knowledge base. Runs entirely on a local TinyLLaMA via Ollama, with a transparent text-based tool-calling protocol because TinyLLaMA does not support native function calling.
 
-> ⚠️ **EDUCATIONAL USE ONLY.** This is a teaching project. It is not a medical device. Do not use any of its outputs for clinical decisions. The corpus is a small set of simplified facts; the calculators use textbook formulas without context-of-use validation. Always consult a licensed clinician.
-
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Local-first](https://img.shields.io/badge/runs-100%25%20local-success)
@@ -39,7 +37,7 @@ flowchart LR
     CTX --> P[ReAct prompt<br/>system + format + ctx]
     P --> L[(TinyLLaMA via Ollama)]
     L --> Parse[parse_action_or_final]
-    Parse -->|Action: calc_bmi<br/>{height, weight}| T[Tool dispatcher]
+    Parse -->|"Action: calc_bmi<br/>{height, weight}"| T[Tool dispatcher]
     T --> CALC[Pure-math calculator]
     CALC --> Feed[Tool result fed back]
     Feed --> L
